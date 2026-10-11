@@ -149,7 +149,7 @@ cargo test
 
 ```text
 $ cargo clippy --all-targets -- -D warnings
-    Checking naive_sort v0.1.0 (/home/yorche3/programming_languages/rust/core/algorithms/naive_sort)
+    Checking naive_sort v0.1.0 (~/programming_languages/rust/core/algorithms/naive_sort)
     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
 ```
 
