@@ -18,8 +18,8 @@
 // `Box<Node>` y sin `unsafe`, `Rc<RefCell<>>` ni arena, el apéndice O(1) no es
 // posible; la semántica se conserva y solo cambia la cota.
 //
-// Implementación pendiente: la escribe el autor. Esta delegación solo genera el
-// contrato (firmas y esqueletos) con las adecuaciones de salida.
+// Implementación del paso 5: recorridos propios sobre la cadena de `Node`, sin
+// `unsafe`, sin `Rc<RefCell<>>` y sin bibliotecas de estructuras.
 
 mod linked_list;
 mod node;

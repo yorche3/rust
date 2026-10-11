@@ -18,28 +18,40 @@ impl Queue {
         }
     }
 
-    /// Esqueleto: true solo si no hay nodos.
+    /// `true` solo si no hay nodos.
     pub fn is_empty(&self) -> bool {
         self.count == 0
     }
 
-    /// Esqueleto: número de nodos.
+    /// Número de nodos.
     pub fn size(&self) -> usize {
         self.count
     }
 
-    /// Esqueleto: encola `value` al final. O(n) — ver la nota del módulo.
-    pub fn enqueue(&mut self, _value: i32) {}
-
-    /// Esqueleto: desencola; -1 cuando la cola está vacía. O(1).
-    pub fn dequeue(&mut self) -> i32 {
-        -1
+    /// Encola `value` al final. O(n) — ver la nota del módulo.
+    pub fn enqueue(&mut self, value: i32) {
+        let mut current = &mut self.front;
+        while let Some(node) = current {
+            current = &mut node.next;
+        }
+        *current = Some(Box::new(Node::new(value)));
+        self.count += 1;
     }
 
-    /// Esqueleto: mira el frente sin desencolarlo; -1 cuando la cola está
-    /// vacía.
+    /// Desencola; -1 cuando la cola está vacía. O(1).
+    pub fn dequeue(&mut self) -> i32 {
+        if let Some(mut front_node) = self.front.take() {
+            self.front = front_node.next.take();
+            self.count -= 1;
+            front_node.value()
+        } else {
+            -1
+        }
+    }
+
+    /// Mira el frente sin desencolarlo; -1 cuando la cola está vacía.
     pub fn peek(&self) -> i32 {
-        -1
+        self.front.as_deref().map_or(-1, |node| node.value())
     }
 }
 

@@ -5,7 +5,9 @@
 /// Celda enlazada compartida por `LinkedList`, `Stack` y `Queue`.
 pub struct Node {
     value: i32,
-    next: Option<Box<Node>>,
+    // Visible para los módulos hermanos (`linked_list`, `stack`, `queue`),
+    // que recorren y reenganchan la cadena.
+    pub(super) next: Option<Box<Node>>,
 }
 
 impl Node {
@@ -15,16 +17,18 @@ impl Node {
         Self { value, next: None }
     }
 
-    /// Esqueleto: valor de la celda.
+    /// Valor de la celda.
     pub fn value(&self) -> i32 {
-        -1
+        self.value
     }
 
-    /// Esqueleto: enlace siguiente, o `None` cuando está ausente.
+    /// Enlace siguiente, o `None` cuando está ausente.
     pub fn next(&self) -> Option<&Node> {
-        None
+        self.next.as_deref()
     }
 
-    /// Esqueleto: reemplaza el enlace siguiente.
-    pub fn set_next(&mut self, _next: Option<Box<Node>>) {}
+    /// Reemplaza el enlace siguiente.
+    pub fn set_next(&mut self, next: Option<Box<Node>>) {
+        self.next = next;
+    }
 }
