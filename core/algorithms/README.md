@@ -11,6 +11,7 @@ Los módulos de esta fase trabajan sobre **`Vec` mutables**, que se ordenan *in-
 | Módulo | Especificación | Enfoque | Tests | Estado |
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `cargo test` + `cargo clippy` | 21 | ✅ |
+| [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `cargo test` + `cargo clippy` | 22 | ✅ |
 
 ---
 
@@ -18,15 +19,30 @@ Los módulos de esta fase trabajan sobre **`Vec` mutables**, que se ordenan *in-
 
 ```text
 algorithms/
-└── naive_sort/                  # 05_Naive_Sort
-    ├── Cargo.toml               # Paquete y [lib] naive_sort
+├── naive_sort/                  # 05_Naive_Sort
+│   ├── Cargo.toml               # Paquete y [lib] naive_sort
+│   ├── Cargo.lock
+│   ├── .gitignore               # Ignora target/
+│   ├── src/
+│   │   ├── lib.rs               # pub mod naive_sort;
+│   │   └── naive_sort.rs        # 3 funciones del contrato
+│   ├── tests/
+│   │   └── naive_sort_tests.rs  # 3 tests × 7 casos
+│   └── README.md
+└── data_structures_basics/      # 06_Data_Structures_Basics
+    ├── Cargo.toml               # Paquete y [lib] data_structures_basics
     ├── Cargo.lock
     ├── .gitignore               # Ignora target/
     ├── src/
-    │   ├── lib.rs               # pub mod naive_sort;
-    │   └── naive_sort.rs        # 3 funciones del contrato
+    │   ├── lib.rs               # Raíz de la biblioteca
+    │   └── data_structures_basics/
+    │       ├── mod.rs           # Reexporta Node, LinkedList, Stack, Queue
+    │       ├── node.rs          # Celda enlazada compartida
+    │       ├── linked_list.rs   # Lista enlazada simple
+    │       ├── stack.rs         # Pila LIFO
+    │       └── queue.rs         # Cola FIFO
     ├── tests/
-    │   └── naive_sort_tests.rs  # 3 tests × 7 casos
+    │   └── data_structures_basics_tests.rs  # 22 tests unitarios
     └── README.md
 ```
 
@@ -59,6 +75,11 @@ algorithms/
 ```bash
 # Naive Sort Tests
 cd naive_sort
+cargo clippy --all-targets -- -D warnings
+cargo test
+
+# Data Structures Basics Tests
+cd ../data_structures_basics
 cargo clippy --all-targets -- -D warnings
 cargo test
 ```

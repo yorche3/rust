@@ -9,7 +9,7 @@ Proyectos en **Rust**, con programas independientes compilados mediante `rustc` 
 | Módulo | Descripción |
 | ------ | ----------- |
 | [`core/foundations/`](core/foundations/) | **Fase 0 — Fundamentos**: `helloworld`, `hellouser`, `unit_test/calculator`, `numbers` |
-| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort` |
+| [`core/algorithms/`](core/algorithms/) | **Fase 1 — Algoritmos Puros**: `naive_sort`, `data_structures_basics` |
 
 ---
 
@@ -39,6 +39,10 @@ cargo test
 
 # Naive Sort tests
 cd ../algorithms/naive_sort
+cargo test
+
+# Data Structures Basics tests
+cd ../data_structures_basics
 cargo test
 ```
 
