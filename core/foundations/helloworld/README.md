@@ -8,13 +8,13 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`helloworld.rs`](helloworld.rs) | Código fuente: define `main` e imprime `"Hello, World! from Rust!"` en la salida estándar. |
+| [`hello_world.rs`](hello_world.rs) | Código fuente: define `main` e imprime `"Hello, World! from Rust!"` en la salida estándar. |
 
 **Estructura de directorios esperada:**
 
 ```text
 helloworld/
-├── helloworld.rs    # Código fuente
+├── hello_world.rs    # Código fuente
 └── README.md        # Este archivo
 ```
 
@@ -34,7 +34,7 @@ helloworld/
    mkdir -p rust/core/foundations/helloworld
    ```
 
-2. Escribir el archivo `helloworld.rs` con el código fuente.
+2. Escribir el archivo `hello_world.rs` con el código fuente.
 
 3. Compilar el archivo con `rustc`.
 
@@ -85,14 +85,14 @@ cargo --version
 
 ```bash
 cd rust/core/foundations/helloworld
-rustc helloworld.rs -o helloworld
+rustc hello_world.rs -o helloworld
 ./helloworld
 ```
 
 ### Comprobar formato y lint (opcional) / Check formatting and lint (optional)
 
 ```bash
-rustfmt --check helloworld.rs
+rustfmt --check hello_world.rs
 ```
 
 ### Salida esperada / Expected output
