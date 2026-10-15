@@ -10,13 +10,13 @@ Solicita un nombre al usuario mediante la entrada estándar y saluda.
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`hellouser.rs`](hellouser.rs) | Código fuente: lee una línea desde `stdin` y muestra un saludo. |
+| [`hello_user.rs`](hello_user.rs) | Código fuente: lee una línea desde `stdin` y muestra un saludo. |
 
 **Estructura de directorios esperada:**
 
 ```text
 hellouser/
-├── hellouser.rs     # Código fuente
+├── hello_user.rs     # Código fuente
 └── README.md        # Este archivo
 ```
 
@@ -44,7 +44,7 @@ hellouser/
    mkdir -p rust/core/foundations/hellouser
    ```
 
-2. Escribir el archivo `hellouser.rs` con el código fuente.
+2. Escribir el archivo `hello_user.rs` con el código fuente.
 
 3. Compilar el archivo con `rustc`.
 
@@ -112,7 +112,7 @@ cargo --version
 
 ```bash
 cd rust/core/foundations/hellouser
-rustc hellouser.rs -o hellouser
+rustc hello_user.rs -o hellouser
 ./hellouser
 ```
 
@@ -127,7 +127,7 @@ printf 'Ada\n' | ./hellouser
 Para una comprobación rápida de compilación sin conservar manualmente el ejecutable:
 
 ```bash
-rustc hellouser.rs -o /tmp/hellouser-rust
+rustc hello_user.rs -o /tmp/hellouser-rust
 ```
 
 > **ES:** La versión de `rustc` utilizada no acepta la opción `rustc --check`; compilar el archivo es la comprobación apropiada para este proyecto independiente.
