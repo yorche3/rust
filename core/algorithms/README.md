@@ -12,6 +12,7 @@ Los módulos de esta fase trabajan sobre **`Vec` mutables**, que se ordenan *in-
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `cargo test` + `cargo clippy` | 21 | ✅ |
 | [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `cargo test` + `cargo clippy` | 22 | ✅ |
+| [`data_structures_advanced/`](data_structures_advanced/) | [07_Data_Structures_Advanced](https://yorche3.github.io/programming_languages/core/algorithms/07_Data_Structures_Advanced/) | `cargo test` + `cargo clippy` | 23 | ✅ |
 
 ---
 
@@ -29,7 +30,7 @@ algorithms/
 │   ├── tests/
 │   │   └── naive_sort_tests.rs  # 3 tests × 7 casos
 │   └── README.md
-└── data_structures_basics/      # 06_Data_Structures_Basics
+├── data_structures_basics/      # 06_Data_Structures_Basics
     ├── Cargo.toml               # Paquete y [lib] data_structures_basics
     ├── Cargo.lock
     ├── .gitignore               # Ignora target/
@@ -43,6 +44,22 @@ algorithms/
     │       └── queue.rs         # Cola FIFO
     ├── tests/
     │   └── data_structures_basics_tests.rs  # 22 tests unitarios
+    └── README.md
+└── data_structures_advanced/    # 07_Data_Structures_Advanced
+    ├── Cargo.toml               # Paquete y [lib] data_structures_advanced
+    ├── Cargo.lock
+    ├── .gitignore               # Ignora target/
+    ├── src/
+    │   ├── lib.rs               # Raíz de la biblioteca
+    │   └── data_structures_advanced/
+    │       ├── mod.rs           # Reexporta Node, TreeNode, BinaryTree, GraphNode, Graph
+    │       ├── node.rs          # Celda simple sin enlaces
+    │       ├── tree_node.rs     # Nodo de árbol binario con left/right
+    │       ├── binary_tree.rs   # Árbol binario de búsqueda
+    │       ├── graph_node.rs    # Vértice de grafo con vecinos ordenados
+    │       └── graph.rs         # Grafo dirigido con registro canónico
+    ├── tests/
+    │   └── data_structures_advanced_tests.rs  # 23 tests de integración
     └── README.md
 ```
 
@@ -80,6 +97,11 @@ cargo test
 
 # Data Structures Basics Tests
 cd ../data_structures_basics
+cargo clippy --all-targets -- -D warnings
+cargo test
+
+# Data Structures Advanced Tests
+cd ../data_structures_advanced
 cargo clippy --all-targets -- -D warnings
 cargo test
 ```
