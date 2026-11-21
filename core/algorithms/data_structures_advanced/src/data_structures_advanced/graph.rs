@@ -84,10 +84,8 @@ impl Graph {
     ///
     /// `Some(vec![])` es el vértice aislado; `None`, el vértice inexistente.
     pub fn neighbors(&self, u: i32) -> Option<Vec<i32>> {
-        match self.find_vertex(u) {
-            Some(u_vertex) => Some(u_vertex.neighbors().to_vec()),
-            None => None,
-        }
+        self.find_vertex(u)
+            .map(|u_vertex| u_vertex.neighbors().to_vec())
     }
 
     /// `true` solo si no hay vértices.
@@ -103,5 +101,11 @@ impl Graph {
     /// Número de aristas registradas.
     pub fn edge_count(&self) -> usize {
         self.edge_total
+    }
+}
+
+impl Default for Graph {
+    fn default() -> Self {
+        Self::new()
     }
 }

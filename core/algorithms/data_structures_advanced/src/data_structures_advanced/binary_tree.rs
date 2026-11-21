@@ -90,3 +90,9 @@ impl BinaryTree {
         self.count
     }
 }
+
+impl Default for BinaryTree {
+    fn default() -> Self {
+        Self::new()
+    }
+}
