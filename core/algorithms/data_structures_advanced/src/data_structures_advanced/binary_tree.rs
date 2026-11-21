@@ -4,7 +4,6 @@
 use super::tree_node::TreeNode;
 
 /// Árbol binario de búsqueda construido desde cero.
-#[allow(dead_code)] // Esqueleto del paso 4b: la raíz se usa en el paso 5.
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct BinaryTree {
     root: Option<Box<TreeNode>>,
@@ -21,18 +20,63 @@ impl BinaryTree {
     }
 
     /// Inserta `value`; un duplicado también es éxito y no crece el tamaño.
-    ///
-    /// Esqueleto del paso 4b: devuelve el fallo sin resolver el caso.
     pub fn insert(&mut self, value: i32) -> bool {
-        let _ = value;
-        false
+        match self.root.as_deref_mut() {
+            Some(node) => {
+                if Self::insert_at(node, value) {
+                    self.count += 1;
+                }
+            }
+            None => {
+                self.root = Some(Box::new(TreeNode::new(value)));
+                self.count += 1;
+            }
+        }
+        true
+    }
+
+    /// Desciende por la invariante del ABB y enlaza el hueco libre.
+    ///
+    /// Devuelve `true` solo si el valor era nuevo: un duplicado no crece el
+    /// tamaño, pero tampoco es un fallo.
+    fn insert_at(node: &mut TreeNode, value: i32) -> bool {
+        let current = node.value();
+        if value == current {
+            return false;
+        }
+        if value < current {
+            match node.left_mut() {
+                Some(left) => Self::insert_at(left, value),
+                None => {
+                    node.set_left(Some(Box::new(TreeNode::new(value))));
+                    true
+                }
+            }
+        } else {
+            match node.right_mut() {
+                Some(right) => Self::insert_at(right, value),
+                None => {
+                    node.set_right(Some(Box::new(TreeNode::new(value))));
+                    true
+                }
+            }
+        }
     }
 
     /// Éxito si `value` pertenece al árbol; sigue la invariante del ABB.
-    ///
-    /// Esqueleto del paso 4b: devuelve el fallo sin resolver el caso.
     pub fn contains(&self, value: i32) -> bool {
-        let _ = value;
+        let mut current = self.root.as_deref();
+        while let Some(node) = current {
+            let node_value = node.value();
+            if value == node_value {
+                return true;
+            }
+            current = if value < node_value {
+                node.left()
+            } else {
+                node.right()
+            };
+        }
         false
     }
 

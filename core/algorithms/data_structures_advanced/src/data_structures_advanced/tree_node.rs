@@ -37,16 +37,22 @@ impl TreeNode {
     }
 
     /// Reemplaza el enlace izquierdo con `node`, o lo deja ausente con `None`.
-    ///
-    /// Esqueleto del paso 4b: el enlace se asigna en el paso 5.
     pub fn set_left(&mut self, node: Option<Box<TreeNode>>) {
-        let _ = node;
+        self.left = node;
     }
 
     /// Reemplaza el enlace derecho con `node`, o lo deja ausente con `None`.
-    ///
-    /// Esqueleto del paso 4b: el enlace se asigna en el paso 5.
     pub fn set_right(&mut self, node: Option<Box<TreeNode>>) {
-        let _ = node;
+        self.right = node;
+    }
+
+    /// Enlace izquierdo mutable, para que `BinaryTree` descienda sin copiar.
+    pub(crate) fn left_mut(&mut self) -> Option<&mut TreeNode> {
+        self.left.as_deref_mut()
+    }
+
+    /// Enlace derecho mutable, para que `BinaryTree` descienda sin copiar.
+    pub(crate) fn right_mut(&mut self) -> Option<&mut TreeNode> {
+        self.right.as_deref_mut()
     }
 }
