@@ -75,7 +75,7 @@ impl Graph {
     /// Éxito si la arista `u → v` existe; falla si falta un extremo.
     pub fn has_edge(&self, u: i32, v: i32) -> bool {
         match self.find_vertex(u) {
-            Some(u_vertex) => u_vertex.neighbors().contains(&v),
+            Some(u_vertex) => u_vertex.has_neighbor(v),
             None => false,
         }
     }
