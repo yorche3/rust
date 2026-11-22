@@ -33,6 +33,18 @@ impl GraphNode {
         &self.neighbors
     }
 
+    /// `true` si `v` ya figura en la adyacencia; se recorre a mano.
+    pub(crate) fn has_neighbor(&self, v: i32) -> bool {
+        let mut index = 0;
+        while index < self.neighbors.len() {
+            if self.neighbors[index] == v {
+                return true;
+            }
+            index += 1;
+        }
+        false
+    }
+
     /// Inserta `v` en su posición creciente.
     ///
     /// Devuelve `false` si la arista ya existía: ni duplica el vecino ni
